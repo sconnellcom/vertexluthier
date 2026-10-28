@@ -146,6 +146,16 @@ h2 {
   background: #171717;
 }
 
+.photo-pending {
+  display: grid;
+  place-items: center;
+  min-height: 240px;
+  padding: 24px;
+  background: #171717;
+  color: #bbb;
+  text-align: center;
+}
+
 .card h2 {
   margin: 20px 12px;
   font-size: 20px;
@@ -183,6 +193,7 @@ h2 {
 .gallery img {
   display: block;
   width: 100%;
+  height: auto;
   max-height: 650px;
   object-fit: contain;
   border-radius: 6px;
