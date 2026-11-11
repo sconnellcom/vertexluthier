@@ -1,0 +1,26 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+import ProductCard from '../components/ProductCard.astro';
+import { products } from '../data/products';
+---
+
+<SiteLayout
+  title="Vertex Luthier | Electric Cellos"
+  description="Custom designed, 3D-printed electric cellos by Vertex Luthier. Explore the Lightning, Wavy, and Packable Travel cellos."
+>
+  <main class="home">
+    <header class="hero">
+      <img class="logo" src={`${import.meta.env.BASE_URL}images/vertex-luthier-header.png`} alt="Vertex Luthier" width="647" height="585">
+      <div class="actions">
+        <a class="button" href="https://www.etsy.com/shop/VertexLuthier">Visit Our Etsy Shop to Buy</a>
+        <a class="button youtube" href="https://www.youtube.com/@VertexLuthier">Visit Our YouTube Channel for Instructions</a>
+      </div>
+    </header>
+    <section class="collection" aria-labelledby="collection-title">
+      <h1 id="collection-title">Our Electric Cellos</h1>
+      <div class="cards">
+        {products.map((product) => <ProductCard product={product} />)}
+      </div>
+    </section>
+  </main>
+</SiteLayout>

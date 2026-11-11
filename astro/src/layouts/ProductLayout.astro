@@ -1,0 +1,38 @@
+---
+import SiteLayout from './SiteLayout.astro';
+import type { Product } from '../data/products';
+
+interface Props {
+  product: Product;
+}
+
+const { product } = Astro.props;
+const base = import.meta.env.BASE_URL;
+---
+
+<SiteLayout title={`${product.name} | Vertex Luthier`} description={product.description}>
+  <header class="site-header">
+    <a href={base}><img src={`${base}images/vertex-luthier-header.png`} alt="Vertex Luthier, home" width="647" height="585"></a>
+  </header>
+  <main class="product">
+    <a class="back-link" href={base}>&larr; All cellos</a>
+    <header class="product-header">
+      <h1>{product.heading}</h1>
+      <p class="price">{product.price}</p>
+      <a class="button" href={product.etsyUrl}>Buy on Etsy</a>
+      <p class="source-note">{product.sourceNote}</p>
+    </header>
+    <div class="product-layout">
+      <section class="gallery" aria-label={product.galleryLabel}>
+        {product.photos.map((photo, index) => (
+          <a href={photo.src}>
+            <img src={photo.src} alt={photo.alt} width={photo.width} height={photo.height} loading={index === 0 ? 'eager' : 'lazy'}>
+          </a>
+        ))}
+      </section>
+      <section class="details" aria-labelledby="about-title">
+        <slot />
+      </section>
+    </div>
+  </main>
+</SiteLayout>
